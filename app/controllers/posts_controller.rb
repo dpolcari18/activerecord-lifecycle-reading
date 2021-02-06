@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
 	def create
 	  @post = Post.new(params.require(:post).permit(:title, :description))
+	  @post.make_title_case
     if @post.save
       redirect_to post_path(@post)
     else
